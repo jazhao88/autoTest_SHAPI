@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="药品耗材管理系统测试套件">
+    <test name="药品耗材系统测试用例">
+        <classes>
+            <class name="cn.medichains.cases.LoginCases"></class>
+        </classes>
+    </test>
+</suite>

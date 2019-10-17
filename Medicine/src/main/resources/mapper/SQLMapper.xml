@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+    <select id="loginCase" parameterType="Integer" resultType="cn.medichains.model.LoginCase">
+        select id,phone,`password`,expected from testMedicine.logincase where id=#{id}
+    </select>
+    <select id="addMedicineCase" parameterType="Integer" resultType="cn.medichains.model.AddMedicineCase">
+        select * from testMedicine.addmedicinecase where id=#{id};
+    </select>
+    <select id="selectAddMedicine" parameterType="cn.medichains.model.AddMedicineCase" resultType="cn.medichains.model.Medicine">
+
+    </select>
+</mapper>
