@@ -17,6 +17,8 @@ public class ConfigFile {
             uri = bundle.getString("login.uri");
         } else if (name == InterfaceName.ADDMEDICINE) {
             uri = bundle.getString("addMedicine.uri");
+        }else if (name == InterfaceName.GETTOKEN){
+            uri = bundle.getString("getToken.uri");
         }
         testUrl = address + uri;
         return testUrl;

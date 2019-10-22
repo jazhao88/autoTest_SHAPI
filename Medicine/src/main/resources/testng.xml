@@ -2,7 +2,12 @@
 <suite name="药品耗材管理系统测试套件">
     <test name="药品耗材系统测试用例">
         <classes>
-            <class name="cn.medichains.cases.LoginCases"></class>
+            <class name="cn.medichains.cases.LoginTest"/>
+            <class name="cn.medichains.cases.AddMedicineTest"/>
         </classes>
+
     </test>
+    <listeners>
+        <listener class-name="cn.medichains.config.ExtentTestNGIReporterListener"/>
+    </listeners>
 </suite>

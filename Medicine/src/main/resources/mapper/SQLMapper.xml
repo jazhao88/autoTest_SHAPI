@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
-    <select id="loginCase" parameterType="Integer" resultType="cn.medichains.model.LoginCase">
-        select id,phone,`password`,expected from testMedicine.logincase where id=#{id}
+<mapper namespace="cn.medichains">
+    <!--<resultMap id="baseResult" type="cn.medichains.model.Medicine">-->
+        <!--<id property="medicineId" column="medicine_id"/>-->
+        <!--<result property="chainId" column="chain_id"/>-->
+        <!--<result property="medicineCode" column="medicine_code"/>-->
+        <!--<result property="medicineName" column="medicine_name"/>-->
+        <!--<result property="medicineAlias" column="medicine_alias"/>-->
+        <!--<result property="medicineType" column="medicine_type"/>-->
+        <!--<result property="dosageForm" column="dosage_form"/>-->
+        <!--<result property="approvalNumber" column="approval_number"/>-->
+        <!--<result property="manufacturer" column="manufacturer"/>-->
+        <!--<result property="antibiotic" column="antibiotic"/>-->
+        <!--<result property="basic" column="basic"/>-->
+        <!--<result property="medicineUsage" column="medicine_usage"/>-->
+        <!--<result property="medicineFrequency" column="medicine_frequency"/>-->
+        <!--<result property="singleDose" column="single_dose"/>-->
+        <!--<result property="costPrice" column="cost_price"/>-->
+        <!--<result property="retailPrice" column="retail_price"/>-->
+        <!--<result property="scattered" column="scattered"/>-->
+        <!--<result property="scatterPrice" column="scatter_price"/>-->
+        <!--<result property="minInventories" column="min_inventories"/>-->
+        <!--<result property="invoiceProject" column="invoice_project"/>-->
+        <!--<result property="deleteFlag" column="delete_flag"/>-->
+        <!--<result property="preparationNumber" column="preparation_number"/>-->
+        <!--<result property="preparationUnit" column="preparation_unit"/>-->
+        <!--<result property="packagingUnit" column="packaging_unit"/>-->
+        <!--<result property="doseNumber" column="dose_number"/>-->
+        <!--<result property="doseUnit" column="dose_unit"/>-->
+        <!--<result property="packagingDetail" column="packaging_detail"/>-->
+        <!--<result property="dgmId" column="dgm_id"/>-->
+        <!--<result property="dgeId" column="dge_id"/>-->
+        <!--<result property="dgfId" column="dgf_id"/>-->
+        <!--<result property="standardCode" column="standard_code"/>-->
+        <!--<result property="tradeName" column="trade_name"/>-->
+        <!--<result property="commonName" column="common_name"/>-->
+        <!--<result property="resalePrice" column="resale_price"/>-->
+        <!--<result property="defaultDay" column="default_day"/>-->
+        <!--<result property="singleDoseUnit" column="single_dose_unit"/>-->
+        <!--<result property="antibioticType" column="antibiotic_type"/>-->
+    <!--</resultMap>-->
+    <!--<sql id="columns">-->
+        <!--`default_day`,`chain_id`,`medicine_name`,`medicine_alias`,`medicine_type`,`dosage_form`,`approval_number`,`manufacturer`,`antibiotic`,`basic`,`medicine_usage`,`medicine_frequency`,`single_dose`,`cost_price`,`retail_price`,`scattered`,`scatter_price`,`min_inventories`,`invoice_project`,`delete_flag`,`preparation_number`,`preparation_unit`,`packaging_unit`,`dose_number`,`dose_unit`,`packaging_detail`,`dgm_id`,`dge_id`,`dgf_id`,`standard_code`,`trade_name`,`common_name`,`resale_price`,`single_dose_unit`,`antibiotic_type`-->
+    <!--</sql>-->
+    <select id="loginCase" parameterType="int" resultType="cn.medichains.model.LoginCase">
+        select id,userName,`password`,expected from testMedicine.logincase where id=#{id}
     </select>
-    <select id="addMedicineCase" parameterType="Integer" resultType="cn.medichains.model.AddMedicineCase">
-        select * from testMedicine.addmedicinecase where id=#{id};
+    <select id="addMedicineCase" parameterType="int" resultType="cn.medichains.model.AddMedicineCase">
+        select *  from testMedicine.addmedicinecase where id=#{id};
     </select>
     <select id="selectAddMedicine" parameterType="cn.medichains.model.AddMedicineCase" resultType="cn.medichains.model.Medicine">
-
+        select *  from clinic_medicine_erp.biz_public_medicine
+        <where>
+            <if test='null != medicineName and "" !=medicineName'>
+                AND medicine_name=#{medicineName}
+            </if>
+        </where>
     </select>
 </mapper>
